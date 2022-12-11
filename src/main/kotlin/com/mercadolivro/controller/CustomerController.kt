@@ -2,6 +2,7 @@ package com.mercadolivro.controller
 
 import com.mercadolivro.model.CustomerModel
 import com.mercadolivro.service.CustomerService
+import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
