@@ -38,6 +38,7 @@ data class BookModel(
     ): this(id, name, price, customer){
         this.status = status
     }
+
     /* o constructor serve para manipular a data class, tendo em vista que passei o status para ser configurado no
     corpo da data class, eu preciso criar um constructor para manipular as informações e não quebrar o BookModel.
      */
