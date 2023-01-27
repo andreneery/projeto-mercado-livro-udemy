@@ -2,7 +2,6 @@ package com.mercadolivro.controller
 
 import com.mercadolivro.model.CustomerModel
 import com.mercadolivro.service.CustomerService
-import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
@@ -24,13 +23,13 @@ class CustomerController( val customerService: CustomerService) {
 
     @GetMapping("/{id}")
     fun getId(@PathVariable id: Int): CustomerModel {
-        return customerService.getId(id)
+        return customerService.getCustomer(id)
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun update(@PathVariable id: Int, @RequestBody customer: CustomerModel) {
-        customerService.update(id, customer)
+        customerService.update(customer)
     }
 
     @DeleteMapping("/{id}")
