@@ -16,13 +16,29 @@ data class BookModel(
     @Column
     var price: BigDecimal,
 
-    @Column
-    @Enumerated(EnumType.STRING)
-    var status: BookStatus? = null,
-
     @ManyToOne
     @JoinColumn(name = "customer_id")
     var customer: CustomerModel? = null
-
-
-)
+){
+    @Column
+    @Enumerated(EnumType.STRING)
+    var status: BookStatus? = null
+        set(value){
+            if(field == BookStatus.DELETADO || field == BookStatus.CANCELADO){
+                throw Exception("Livro não pode ser alterado. Status: ${field}")
+            }
+            field = value
+        }
+    constructor(
+        id: Int? = null,
+        name: String,
+        price: BigDecimal,
+        customer: CustomerModel? = null,
+        status: BookStatus?
+    ): this(id, name, price, customer){
+        this.status = status
+    }
+    /* o constructor serve para manipular a data class, tendo em vista que passei o status para ser configurado no
+    corpo da data class, eu preciso criar um constructor para manipular as informações e não quebrar o BookModel.
+     */
+}
