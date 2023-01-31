@@ -26,7 +26,7 @@ data class BookModel(
     @Enumerated(EnumType.STRING)
     var status: BookStatus? = null
         set(value){
-            if(field == BookStatus.DELETADO || field == BookStatus.CANCELADO){
+            if(field == BookStatus.DELETADO || field == BookStatus.CANCELADO || field == BookStatus.VENDIDO){
                 throw BadRequestException(
                     errorCode = Errors.ML102.code,
                     message = Errors.ML102.message.format(field)
