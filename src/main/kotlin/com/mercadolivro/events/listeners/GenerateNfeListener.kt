@@ -3,6 +3,7 @@ package com.mercadolivro.events.listeners
 import com.mercadolivro.events.PurchaseEvents
 import com.mercadolivro.service.PurchaseService
 import org.springframework.context.event.EventListener
+import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Component
 import java.util.UUID
 
@@ -10,6 +11,7 @@ import java.util.UUID
 class GenerateNfeListener(
     private val purchaseService: PurchaseService
 ) {
+    @Async
     @EventListener
     fun listen(purchaseEvents: PurchaseEvents){
         val nfe = UUID.randomUUID().toString()
