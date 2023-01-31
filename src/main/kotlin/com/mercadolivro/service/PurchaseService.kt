@@ -1,6 +1,7 @@
 package com.mercadolivro.service
 
 import com.mercadolivro.events.PurchaseEvents
+import com.mercadolivro.model.BookModel
 import com.mercadolivro.model.PurchaseModel
 import com.mercadolivro.repository.PurchaseRepository
 import org.springframework.context.ApplicationEventPublisher
@@ -17,7 +18,7 @@ class PurchaseService(
 
         applicationEventPublisher.publishEvent(PurchaseEvents(source = this, purchaseModel))
     }
-
-    fun
-
+    fun update(purchaseModel: PurchaseModel) {
+        purchaseRepository.save(purchaseModel)
+    }
 }

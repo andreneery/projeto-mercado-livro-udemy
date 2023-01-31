@@ -13,7 +13,7 @@ class PurchaseMapper(
 ) {
     fun toModel(request: PostPurchaseRequest): PurchaseModel {
         val customer = customerService.findById(request.customerId)
-        val books = bookService.findAllById(request.bookIds)
+        val books = bookService.findAllById(request.bookIds).toMutableList()
 
         return PurchaseModel(
             customer = customer,
